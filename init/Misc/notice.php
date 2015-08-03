@@ -21,19 +21,26 @@ ul{margin:0; padding:0; list-style-type:none;font-size:0;line-height:0;}
 </style>	
 </head><body><div id="main"><div id="contents">
 <h2><?php echo $msg?></h2>
-<?php foreach( $traces as $trace ){if(is_array($trace)&&!empty($trace["file"])){
-$souceline = getsource($trace["file"], $trace["line"]);if( $souceline ){
+<?php 
+foreach( $traces as $trace ){
+	if(is_array($trace)&&!empty($trace["file"])){
+		$souceline = getsource($trace["file"], $trace["line"]);
+		if( $souceline ){
 ?>
 <ul><li><span><?php echo $trace["file"];?> on line <?php echo $trace["line"];?> </span></li></ul>
 <div id="oneborder">
 <?php 
-foreach( $souceline as $singleline )echo $singleline;?>
+foreach( $souceline as $singleline )
+	echo $singleline;
+?>
 </div>
 <?php }}}?>
 </div></div><div style="clear:both;"></body></html>
 <?php
 function getsource($file, $line){
-	if (!(file_exists($file) && is_file($file))) {return '';}
+	if (!(file_exists($file) && is_file($file))) {
+		return '';
+	}
 	$data = file($file);$count = count($data) - 1;
 	$start = $line - $GLOBALS['G_SP']["sp_error_show_source"];if ($start < 1) {$start = 1;}
 	$end = $line + $GLOBALS['G_SP']["sp_error_show_source"];if ($end > $count) {$end = $count + 1;}

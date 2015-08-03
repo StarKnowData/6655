@@ -14,8 +14,6 @@ $check = isset($_GET['check_file_exists']) ? $_GET['check_file_exists'] : '';
 
 $avatar = 'avatar/'.get_avatar($uid, $size, $type);
 
-
-
 if(file_exists(dirname(__FILE__).'/'.$avatar)) {
 	if($check) {
 		echo 1;
@@ -51,5 +49,4 @@ function get_avatar($uid, $size = 'middle', $type = '') {
 	$typeadd = $type == 'real' ? '_real' : '';
 	return $dir1.'/'.$dir2.'/'.$dir3.'/'.$typeadd.$size.'_'.substr($uid, -2).".jpg";
 }
-
 ?>

@@ -8,14 +8,16 @@
 define('APP_PATH',dirname(__FILE__));
 define('IN_APP',TRUE);
 define('SP_PATH',APP_PATH.'/init');
-if(!is_file(APP_PATH.'/config.php')){header('Location:install/');}
+if(!is_file(APP_PATH.'/config.php')){
+    header('Location:install/');
+}
 
-if(isset($_REQUEST['ssid'])){session_id($_REQUEST['ssid']);}
+if(isset($_REQUEST['ssid'])){
+    session_id($_REQUEST['ssid']);
+}
 require(APP_PATH.'/config.php');
 $spConfig["view"]["config"]["template_dir"] = 'tplv2';
 require(SP_PATH.'/init.php');
 header('Content-type: text/html; charset=utf-8');
-
-
 spRun();
 ?>

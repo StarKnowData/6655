@@ -10,7 +10,7 @@ class db_models extends ybModel
 	var $table = "models"; // 数据表的名称 
     
     
-    /*
+    /**
      * 返回model的内容
      * model为mid
      * data 为model内容
